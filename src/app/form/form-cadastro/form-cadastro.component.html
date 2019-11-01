@@ -1,0 +1,53 @@
+<div class="container mt-5 z-depth-1">
+    <h1 class="text-center">Cadstro de programadores</h1>
+    <section class="dark-grey-text p-5">
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-5 mb-4 mb-md-0">
+                <div class="view">
+                    <img src="https://mdbootstrap.com/img/illustrations/undraw_Group_chat_unwm.svg" class="img-fluid" alt="smaple image">
+                </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-7 mb-lg-0 mb-4">
+                <!-- Form -->
+                <form method="POST" action="http://localhost:3003/cadastrar">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sobrenome">Sobrenome</label>
+                            <input type="texr" class="form-control" name="sobrenome" id="sobrenome" placeholder="Sobrenome">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="idade">Idade</label>
+                            <input type="text" class="form-control" name="idade" id="idade" placeholder="Idade">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="dataNascimento">Data de Nascimento</label>
+                            <input type="date" class="form-control" name="dataNascimento" id="dataNascimento" placeholder="Sobrenome">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="linguagem">Linguagem favorita</label>
+                            <input type="text" class="form-control" name="linguagem" id="linguagem" placeholder="linguagem">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="observacao">Observação</label>
+                            <textarea type="date" rows="1" class="form-control" name="observacao" id="observacao" placeholder="Observação"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+                <!-- Form -->
+            </div>
+        </div>
+    </section>
+</div>

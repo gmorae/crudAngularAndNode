@@ -1,1 +1,43 @@
-<p>user-list works!</p>
+<main>
+    <div class="container">
+        <div class="my-5">
+            <h1 class="text-center">Lista de programadores</h1>
+        </div>
+        <!-- Editable table -->
+        <div class="card-body">
+            <div id="table" class="table-editable">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nome completo</th>
+                            <th class="text-center">Idade</th>
+                            <th class="text-center">Data de nascimento</th>
+                            <th class="text-center">Linguagem preferida</th>
+                            <th class="text-center">Observação</th>
+                            <th class="text-center">Editar</th>
+                            <th class="text-center">Remover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let u of users">
+                            <td class="pt-3-half">{{u.nome}} {{ u.sobrenome }}</td>
+                            <td class="pt-3-half">{{u.idade}}</td>
+                            <td class="pt-3-half">{{u.dataDenascimento}}</td>
+                            <td class="pt-3-half">{{u.linguagem}}</td>
+                            <td class="pt-3-half">{{u.observacao}}</td>
+                            <td class="pt-3-half">
+                                <span class="table-edit"><button type="button"
+                                class="btn btn-success btn-rounded btn-sm my-0">Editar</button></span>
+                            </td>
+                            <td>
+                                <span class="table-remove"><button type="button"
+                            class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Editable table -->
+    </div>
+</main>

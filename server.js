@@ -13,9 +13,19 @@ function conexao() {
     })
 }
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser())
+app.use(bodyParser.json({ limit: '5mb' }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATH, PUT, DELETE');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
 
-app.listen(3003, () => {
+
+app.listen(8080, () => {
     console.log('Servidor funcionando !')
 })
 
@@ -23,7 +33,7 @@ app.get("/", (req, res) => {
     res.send("hello")
 })
 
-app.get("/get", (req, res) => {
+app.get("/user", (req, res) => {
     const sql = "select * from programadores"
     conexao().query(sql, (erro, ln, cl) => {
         console.log("sucesso")
@@ -31,11 +41,11 @@ app.get("/get", (req, res) => {
     })
 })
 
-app.post('/cadastrar', (req, res) => {
+app.post('/user', (req, res) => {
     var nome = req.body.nome
     var sobrenome = req.body.sobrenome
     var idade = req.body.idade
-    var dataNascimento = req.body.dataNascimento
+    var dataNascimento = req.body.dataDenascimento
     var linguagem = req.body.linguagem
     var observacao = req.body.observacao
     const sql = "INSERT INTO programadores (nome, sobrenome, idade, dataDenascimento, linguagem, observacao) VALUES ( ?, ?, ?, ?, ?, ?);"
@@ -49,3 +59,5 @@ app.post('/cadastrar', (req, res) => {
     })
     res.end()
 })
+
+app.put('/atualizar', )

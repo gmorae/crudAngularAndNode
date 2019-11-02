@@ -15,4 +15,8 @@ export class FormService {
   criar(usuario: any){
     return this.http.post(this.base_url, usuario)
   }
+
+  deletar(id: number){
+    return this.http.delete(this.base_url+'/'+id)
+  } 
 }

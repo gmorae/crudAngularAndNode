@@ -60,4 +60,11 @@ app.post('/user', (req, res) => {
     res.end()
 })
 
-app.put('/atualizar', )
+app.delete('/user/:id', function(req, res) {
+    const sql = 'DELETE FROM programadores WHERE id_programadores = ?'
+    conexao().query(sql, [req.params.id], function(err, results) {
+        if (err) throw err;
+    });
+
+    res.end()
+});

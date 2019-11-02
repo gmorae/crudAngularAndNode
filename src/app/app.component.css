@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton|Montserrat&display=swap');
+.navbar-brand {
+    font-size: 3em !important;
+    font-family: 'Monoton', cursive !important;
+}
+
+nav {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+}

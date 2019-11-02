@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormService } from '../../form.service';  
+import { FormService } from '../../form.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 
 @Component({
@@ -12,13 +13,17 @@ export class FormCadastroComponent implements OnInit {
 
   users: Array<any>
   formulario: FormGroup;
-  constructor( private formService : FormService,
-                private formBuilder : FormBuilder) { }
+  bsConfig: Partial<BsDatepickerConfig>;
 
-  ngOnInit() {
-    this.configurarFormulario()
+  constructor(private formService: FormService,
+    private formBuilder: FormBuilder) {
+      this.bsConfig = Object.assign({}, {containerClass: 'theme-blue'})
+    }
+    
+    ngOnInit() {
+      this.configurarFormulario()
   }
-  configurarFormulario(){
+  configurarFormulario() {
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
       sobrenome: [null, Validators.required],
@@ -28,12 +33,14 @@ export class FormCadastroComponent implements OnInit {
       observacao: [null, Validators.required]
     })
   }
-  
-  criar(){
+
+  criar() {
     this.formService.criar(this.formulario.value).subscribe(resposta => {
       this.formulario.reset('usuario cadastrado com sucesso');
     })
   }
+
+
 
 }
 

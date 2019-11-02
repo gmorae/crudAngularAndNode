@@ -41,6 +41,14 @@ app.get("/user", (req, res) => {
     })
 })
 
+app.get("/user/:id", (req, res) => {
+    const sql = "select * from programadores where id_programadores = ?"
+    conexao().query(sql, [req.params.id], (erro, ln, cl) => {
+        console.log("sucesso")
+        res.json(ln)
+    })
+})
+
 app.post('/user', (req, res) => {
     var nome = req.body.nome
     var sobrenome = req.body.sobrenome
@@ -50,6 +58,25 @@ app.post('/user', (req, res) => {
     var observacao = req.body.observacao
     const sql = "INSERT INTO programadores (nome, sobrenome, idade, dataDenascimento, linguagem, observacao) VALUES ( ?, ?, ?, ?, ?, ?);"
     conexao().query(sql, [nome, sobrenome, idade, dataNascimento, linguagem, observacao], (erro, result, fields) => {
+        if (erro) {
+            console.log("Erro: " + erro)
+            res.sendStatus(500)
+            return
+        }
+        console.log("Inserido com sucesso")
+    })
+    res.end()
+})
+
+app.put('/user/:id', function(req, res) {
+    var nome = req.body.nome
+    var sobrenome = req.body.sobrenome
+    var idade = req.body.idade
+    var dataNascimento = req.body.dataDenascimento
+    var linguagem = req.body.linguagem
+    var observacao = req.body.observacao
+    const sql = "Update programadores set nome = '?', sobrenome = '?', idade = '?', dataDenascimento = '?', linguagem = '?', observacao = '?' where id_programadores = '?' ;"
+    conexao().query(sql, [req.params.id, nome, sobrenome, idade, dataNascimento, linguagem, observacao], (erro, result, fields) => {
         if (erro) {
             console.log("Erro: " + erro)
             res.sendStatus(500)

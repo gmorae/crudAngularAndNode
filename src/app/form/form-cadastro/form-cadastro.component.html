@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="dataDenascimento">Data de Nascimento</label>
-                                <input type="date" class="form-control" name="dataDenascimento" id="dataDenascimento" placeholder="Data de nascimento" formControlName="dataDenascimento">
+                                <input type="text" class="form-control" name="dataDenascimento" id="dataDenascimento" placeholder="dd/mm/aaaa" formControlName="dataDenascimento" bsDatepicker [bsConfig]="bsConfig" [maxDate]="maxDate">
                             </div>
                         </div>
                         <div class="form-row">

@@ -4,7 +4,7 @@
             <h1 class="text-center">Lista de programadores</h1>
         </div>
         <!-- Editable table -->
-        <div class="card-body">
+        <div class="card-body" data-aos="fade-up" data-aos-once="true">
             <div id="table" class="table-editable">
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <thead>
@@ -22,16 +22,16 @@
                         <tr *ngFor="let u of users">
                             <td class="pt-3-half">{{u.nome}} {{ u.sobrenome }}</td>
                             <td class="pt-3-half">{{u.idade}}</td>
-                            <td class="pt-3-half">{{u.dataDenascimento}}</td>
+                            <td class="pt-3-half">{{ u.dataDenascimento | date: 'dd/MM/yyyy' }}</td>
                             <td class="pt-3-half">{{u.linguagem}}</td>
                             <td class="pt-3-half">{{u.observacao}}</td>
                             <td class="pt-3-half">
                                 <span class="table-edit"><button type="button"
-                                class="btn btn-success btn-rounded btn-sm my-0">Editar</button></span>
+                                class="btn btn-success btn-rounded btn-sm my-0" (click)="openModal(template, users)">Editar</button></span>
                             </td>
                             <td>
                                 <span class="table-remove"><button type="button"
-                            class="btn btn-danger btn-rounded btn-sm my-0" (click)="delete(u.id_programadores)" >Remove</button></span>
+                            class="btn btn-danger btn-rounded btn-sm my-0" (click)="delete(u.id_programadores)" >Remover</button></span>
                             </td>
                         </tr>
                     </tbody>
@@ -41,3 +41,46 @@
         <!-- Editable table -->
     </div>
 </main>
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Editar usuário</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <form method="POST" (ngSubmit)="editar()" [formGroup]="formulario">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" value="{{users.nome}}" id="nome" placeholder="Nome" formControlName="nome">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="texr" class="form-control" name="sobrenome" id="sobrenome" value="{{users.sobrenome}}" placeholder="Sobrenome" formControlName="sobrenome">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="idade">Idade</label>
+                    <input type="text" class="form-control" name="idade" id="idade" value="{{users.idade}}" placeholder="Idade" formControlName="idade">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="daformtaDenascimento">Data de Nascimento</label>
+                    <input type="text" class="form-control" name="dataDenascimento" id="dataDenascimento" value="{{users.dataDenascimento}}" placeholder="dd/mm/aaaa" formControlName="dataDenascimento" bsDatepicker [bsConfig]="bsConfig">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="linguagem">Linguagem favorita</label>
+                    <input type="text" class="form-control" name="linguagem" id="linguagem" placeholder="linguagem" value="{{users.linguagem}}" formControlName="linguagem">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="observacao">Observação</label>
+                    <textarea type="date" rows="1" class="form-control" name="observacao" id="observacao" placeholder="Observação" formControlName="observacao">{{users.observacao}}</textarea>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Editar</button>
+        </form>
+    </div>
+</ng-template>

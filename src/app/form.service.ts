@@ -16,6 +16,14 @@ export class FormService {
     return this.http.post(this.base_url, usuario)
   }
 
+  listId(id: number){
+    return this.http.get(this.base_url + '/' + id)
+  }
+
+  editar(id: number, usuario: any){
+    
+  }
+
   deletar(id: number){
     return this.http.delete(this.base_url+'/'+id)
   } 

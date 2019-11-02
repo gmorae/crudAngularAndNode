@@ -3,14 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
+ 
   {
     path: '',
-    redirectTo: '',
-    pathMatch: 'full',
-    
-  },
-  {
-    path: 'form',
     loadChildren: './form/form.module#FormModule'
   },
   {

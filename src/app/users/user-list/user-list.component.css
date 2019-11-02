@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton|Montserrat&display=swap');
+h1,
+table,
+th,
+td,
+.btn,
+label,
+::placeholder,
+.btn,
+h4 {
+    font-family: 'Montserrat', sans-serif;
+}

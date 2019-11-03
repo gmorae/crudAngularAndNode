@@ -27,7 +27,7 @@
                             <td class="pt-3-half">{{u.observacao}}</td>
                             <td class="pt-3-half">
                                 <span class="table-edit"><button type="button"
-                                class="btn btn-success btn-rounded btn-sm my-0" (click)="openModal(template, users)">Editar</button></span>
+                                class="btn btn-success btn-rounded btn-sm my-0" (click)="openModal(template, u.id_programadores)">Editar</button></span>
                             </td>
                             <td>
                                 <span class="table-remove"><button type="button"
@@ -41,6 +41,8 @@
         <!-- Editable table -->
     </div>
 </main>
+
+<!-- Modal -->
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Editar usuário</h4>
@@ -48,39 +50,39 @@
       <span aria-hidden="true">&times;</span>
     </button>
     </div>
-    <div class="modal-body">
-        <form method="POST" (ngSubmit)="editar()" [formGroup]="formulario">
+    <div class="modal-body" *ngFor="let user of user">
+        <form method="POST" (ngSubmit)="editar(user.id_programadores)" [formGroup]="formulario">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" value="{{users.nome}}" id="nome" placeholder="Nome" formControlName="nome">
+                    <input type="text" class="form-control" name="nome" value="{{user.nome}}" id="nome" placeholder="Nome" formControlName="nome">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="sobrenome">Sobrenome</label>
-                    <input type="texr" class="form-control" name="sobrenome" id="sobrenome" value="{{users.sobrenome}}" placeholder="Sobrenome" formControlName="sobrenome">
+                    <input type="texr" class="form-control" name="sobrenome" id="sobrenome" value="{{user.sobrenome}}" placeholder="Sobrenome" formControlName="sobrenome">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="idade">Idade</label>
-                    <input type="text" class="form-control" name="idade" id="idade" value="{{users.idade}}" placeholder="Idade" formControlName="idade">
+                    <input type="text" class="form-control" name="idade" id="idade" value="{{user.idade}}" placeholder="Idade" formControlName="idade">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="daformtaDenascimento">Data de Nascimento</label>
-                    <input type="text" class="form-control" name="dataDenascimento" id="dataDenascimento" value="{{users.dataDenascimento}}" placeholder="dd/mm/aaaa" formControlName="dataDenascimento" bsDatepicker [bsConfig]="bsConfig">
+                    <input type="text" class="form-control" name="dataDenascimento" id="dataDenascimento" value="{{user.dataDenascimento | date: dd/MM/aaaa}}" placeholder="dd/mm/aaaa" formControlName="dataDenascimento" bsDatepicker [bsConfig]="bsConfig">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="linguagem">Linguagem favorita</label>
-                    <input type="text" class="form-control" name="linguagem" id="linguagem" placeholder="linguagem" value="{{users.linguagem}}" formControlName="linguagem">
+                    <input type="text" class="form-control" name="linguagem" id="linguagem" placeholder="linguagem" value="{{user.linguagem}}" formControlName="linguagem">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="observacao">Observação</label>
-                    <textarea type="date" rows="1" class="form-control" name="observacao" id="observacao" placeholder="Observação" formControlName="observacao">{{users.observacao}}</textarea>
+                    <textarea type="date" rows="1" class="form-control" name="observacao" id="observacao" placeholder="Observação" formControlName="observacao">{{user.observacao}}</textarea>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Editar</button>
+            <button class="btn btn-primary" type="submit">Atualizar</button>
         </form>
     </div>
 </ng-template>

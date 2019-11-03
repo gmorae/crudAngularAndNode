@@ -10,9 +10,9 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 })
 export class UserListComponent implements OnInit {
   users: Array<any> = new Array()
+  user : any
   modalRef: BsModalRef;
   formulario: FormGroup;
-  editUser: any
   bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(private userService: FormService,
@@ -26,8 +26,8 @@ export class UserListComponent implements OnInit {
     this.listarUser()
     this.configurarFormulario()
   }
-
-
+  
+  
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
@@ -38,10 +38,16 @@ export class UserListComponent implements OnInit {
       observacao: [null, Validators.required]
     })
   }
-
-  openModal(template: TemplateRef<any>, users) {
+  
+  openModal(template: TemplateRef<any>, id: number) {
     this.modalRef = this.modalService.show(template);
-    this.editUser = users
+    this.userService.listId(id).subscribe(user => {
+      console.log('Usuario editado => ' + id)
+      console.log(user)
+      this.user = user;
+    }, err => {
+      console.log(err)
+    })
   }
 
   listarUser() {
@@ -52,17 +58,14 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  list(id: number) {
-    this.userService.listId(id).subscribe(users => {
-      this.editUser = users
-    }, err => {
-      console.log(err)
-    })
+  list(id: number){
+    
   }
 
-  editar(id: number) {
-    this.userService.criar(this.formulario.value).subscribe(resposta => {
-      this.formulario.reset('usuario editado com sucesso');
+  editar(id: number, data: any) {
+    console.log('id => ' + id)
+    this.userService.editar(id, this.formulario.value).subscribe(resposta => {
+      this.modalRef.hide()
     })
   }
   delete(id: number) {

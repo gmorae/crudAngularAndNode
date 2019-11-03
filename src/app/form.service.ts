@@ -21,7 +21,7 @@ export class FormService {
   }
 
   editar(id: number, usuario: any){
-    
+    return this.http.put(this.base_url + '/' + id, usuario)
   }
 
   deletar(id: number){

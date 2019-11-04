@@ -46,5 +46,14 @@ Execute `ng serve` para executar a versão de desenvolvimento. Depois acesse `ht
 Para executar o servidor de endpoints de API, em um outro terminal na mesma pasta execute `node server.js`. A API poderá ser acessada via `http://localhost:8080/user`.
 
 
+## API
+
+A API do projeto foi desenvolvida em nodejs e foi criado os seguintes metódos
+* Get - `locahost:8080/user`
+* Get - `localhost:8080/user/id`
+* Post - `localhost:8080/user`
+* Put - `localhost:8080/user/id`
+* Delete - `localhost:8080/user/id`
+
 ## Dúvidas
 Caso há alguma dúvida em relação a este repositório, envie para gmmartins06@gmail.com

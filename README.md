@@ -1,27 +1,50 @@
-# AngularCRUD
+# Angular 8 crud
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-cli) versão 8.3.17
 
-## Development server
+## Escopo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Você deve em criar uma aplicação para adicionar, alterar, listar e excluir “programadores”. 
+A aplicação deve ter um Front-end para que o usuário faça a interação em uma API.
 
-## Code scaffolding
+## Front-end:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Angular 2+ (preferencialmente versão 8). A arquitetura e layout do front-end fica à escolha, pode ser uma ou mais telas, disposição de elementos, etc.
 
-## Build
+Obs.: Para estilização utilize preferencialmente Bootstrap.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Back-end:
 
-## Running unit tests
+Pode utilizar a tecnologia de sua preferência (Node, Java, PHP, C# e etc) ou criar as APIS mockadas.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Requisitos:
+Tanto o front-end (formulário) quanto o back-end deverão contemplar os seguintes campos:
 
-## Running end-to-end tests
+Nome
+Sobrenome
+Idade
+Data de nascimento
+Linguagem de programação favorita
+Observação
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Tecnologias
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Angular CLI 8.3.17
+- Bootstrap 4
+- Node.js 12.13
+
+## Como instalar
+
+- Baixe ou clone este repositório usando `git clone https://github.com/gmorae/crudAngularAndNode.git`;
+- Dentro do diretório, instale as dependências usando `npm install`.
+
+## Como executar
+
+Execute `ng serve` para executar a versão de desenvolvimento. Depois acesse `http://localhost:4200/`.
+
+Para executar o servidor de endpoints de API, em um outro terminal na mesma pasta execute `node server.js`. A API poderá ser acessada via `http://localhost:8080/user`.
+
+
+## Dúvidas
+Caso há alguma dúvida em relação a este repositório, envie para gmmartins06@gmail.com

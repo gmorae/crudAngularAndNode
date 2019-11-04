@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="daformtaDenascimento">Data de Nascimento</label>
-                    <input type="text" class="form-control" name="dataDenascimento" id="dataDenascimento" value="{{user.dataDenascimento | date: dd/MM/aaaa}}" placeholder="dd/mm/aaaa" formControlName="dataDenascimento" bsDatepicker [bsConfig]="bsConfig">
+                    <input type="text" class="form-control" name="dataDenascimento" id="dataDenascimento" value="{{user.dataDenascimento | date: 'dd/MM/yyyy'}}" placeholder="dd/mm/aaaa" formControlName="dataDenascimento" bsDatepicker [bsConfig]="bsConfig">
                 </div>
             </div>
             <div class="form-row">

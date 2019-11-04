@@ -80,11 +80,10 @@ app.put('/user/:id', function(req, res) {
     const sql = "Update programadores set nome = ?, sobrenome = ?, idade = ?, dataDenascimento = ?, linguagem = ?, observacao = ? where id_programadores = ? ;"
     conexao().query(sql, [nome, sobrenome, idade, dataNascimento, linguagem, observacao, id_user], (erro, result, fields) => {
         if (erro) {
-            console.log("Erro: " + erro)
-            res.sendStatus(500)
-            return
+            console.log('nada foi editado')
+
         }
-        console.log("Inserido com sucesso")
+        console.log("Atualizado com sucesso")
     })
     res.end()
 })
